@@ -1,69 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import steve1 from '../assets/steve1.jpg';
 
-// Extend the Window interface to include createMyWidget
-declare global {
-  interface Window {
-    createMyWidget?: (id: string, options: Record<string, any>) => void;
-  }
-}
-
-const PRICE_CHART_ID = 'price-chart-widget-container';
-
-export const PriceChartWidget = () => {
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const loadWidget = () => {
-      if (typeof window.createMyWidget === 'function') {
-        window.createMyWidget(PRICE_CHART_ID, {
-          autoSize: true,
-          chainId: 'solana',
-          tokenAddress: 'Ceeu2zv9wbgipjrFiCz1rf8XYRWzmw22LJHJ9k3XBAGS',
-          showHoldersChart: false,
-          defaultInterval: '5',
-          timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone ?? 'Etc/UTC',
-          theme: 'moralis',
-          locale: 'en',
-          showCurrencyToggle: true,
-          hideLeftToolbar: true,
-          hideTopToolbar: true,
-          hideBottomToolbar: true
-        });
-      } else {
-        console.error('createMyWidget function is not defined.');
-      }
-    };
-
-    if (!document.getElementById('moralis-chart-widget')) {
-      const script = document.createElement('script');
-      script.id = 'moralis-chart-widget';
-      script.src = 'https://moralis.com/static/embed/chart.js';
-      script.type = 'text/javascript';
-      script.async = true;
-      script.onload = loadWidget;
-      script.onerror = () => {
-        console.error('Failed to load the chart widget script.');
-      };
-      document.body.appendChild(script);
-    } else {
-      loadWidget();
-    }
-  }, []);
-
-  return (
-    <div style={{ width: "100%", height: "100%" }}>
-      <div
-        id={PRICE_CHART_ID}
-        ref={containerRef}
-        style={{ width: "100%", height: "100%" }}
-      />
-    </div>
-  );
-};
-
 const AboutScumbagSteve = () => {
   return (
     <div className="about-container" style={{
@@ -76,7 +13,7 @@ const AboutScumbagSteve = () => {
       maxWidth: '800px', // Set a maximum width for better readability
       width: '90%', // Ensure responsiveness on smaller screens
     }}>
-      <h2 id="about-scumbag-steve" style={{ fontSize: '2rem', color: '#00ff00', marginBottom: '1rem' }}>Scumbag Steve: The Meme That Defined an Era</h2>
+      <h2 id="about-scumbag-steve" style={{ fontSize: '2rem', color: '#83efaa', marginBottom: '1rem' }}>Scumbag Steve: The Meme That Defined an Era</h2>
       <p style={{ fontSize: '1.1rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>
         In the wild, unfiltered world of early 2010s internet culture, few memes captured the collective frustration with everyday jerks quite like Scumbag Steve. The meme, born from a candid Myspace photo, features a young man in a backward baseball cap, his expression teetering between smug confidence and casual indifference. This image, first thrust into the spotlight on the NPC cesspool known as Reddit in 2011, became the face of a cultural phenomenon, embodying the archetype of the inconsiderate, self-serving bro who always seems to dodge accountability.
       </p>
@@ -122,16 +59,10 @@ const NewAboutSection = () => {
       maxWidth: '800px',
       width: '90%',
     }}>
-      <h2 id="steve-memecoin" style={{ fontSize: '2rem', color: '#00ff00', marginBottom: '1rem' }}>STEVE Memecoin on Solana</h2>
-      <p style={{ fontSize: '1.1rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>
-        <strong>CA: Ceeu2zv9wbgipjrFiCz1rf8XYRWzmw22LJHJ9k3XBAGS</strong>
-      </p>
+      <h2 id="steve-memecoin" style={{ fontSize: '2rem', color: '#83efaa', marginBottom: '1rem' }}>STEVE Memecoin on Solana</h2>
       <p style={{ fontSize: '1.1rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>
        Launching a token like STEVE, inspired by the Scumbag Steve meme, draws on lessons from the history of creator memecoins, offering a strategic blend of cultural resonance, community engagement, and economic potential. Past memecoins, such as TROLL, Dogecoin, Shiba Inu, and Pepe, demonstrate that tokens rooted in internet culture can gain traction by capitalizing on existing memes with strong recognition.
       </p>
-      <div style={{ marginTop: '1.5rem', height: '400px' }}>
-        <PriceChartWidget />
-      </div>
     </div>
   );
 };
@@ -148,7 +79,7 @@ const AdditionalAboutSection = () => {
       maxWidth: '800px',
       width: '90%',
     }}>
-      <h2 id="who-is-scumbag-steve" style={{ fontSize: '2rem', color: '#00ff00', marginBottom: '1rem' }}>Who is Scumbag Steve?</h2>
+      <h2 id="who-is-scumbag-steve" style={{ fontSize: '2rem', color: '#83efaa', marginBottom: '1rem' }}>Who is Scumbag Steve?</h2>
       <p style={{ fontSize: '1.1rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>
         Behind the Scumbag Steve meme is Blake Boston, the real-life figure whose teenage Myspace photo unwittingly became internet legend. Far from being the scumbag the meme portrays, Boston has leaned into his unexpected fame with good humor, appearing in interviews, music videos, and even embracing the "Scumbag Steve" moniker on social media. His willingness to roll with the punch has only added to the meme's enduring charm. Blake now plays in a band called Free Spirit and is a proud father of three.
       </p>
@@ -171,13 +102,13 @@ const AnotherAboutSection = () => {
       maxWidth: '800px',
       width: '90%',
     }}>
-      <h2 id="why-we-choose-bags" style={{ fontSize: '2rem', color: '#00ff00', marginBottom: '1rem' }}>Why We Choose BAGS</h2>
+      <h2 id="why-we-choose-bags" style={{ fontSize: '2rem', color: '#83efaa', marginBottom: '1rem' /* Updated green */ }}>Why We Are Migrating to Pump</h2>
       <p style={{ fontSize: '1.1rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>
-        We selected the BAGS app for its launch platform due to the attractive 1% royalty offered on trading volume, providing a consistent incentive for creators. This feature, combined with the ability to verify ownership via social media accounts, makes BAGS a compelling choice for launching creator-led projects.
+        We originally selected BAGS for its launch platform due to the attractive 1% royalty offered on trading volume. Due to limited support for creators outside of monetary incentive, is in the best interest of Blake Boston to be able to stream from PumpFun where he will receive direct support from the launchpad itself. 
       </p>
       <button
-        onClick={() => window.open('https://apps.apple.com/us/app/bags-trade-crypto-memes/id6473196333?platform=iphone', '_blank')}
-        aria-label="Download the BAGS app"
+        onClick={() => window.open('https://apps.apple.com/us/app/pump-fun-solana-meme-coins/id6717572591', '_blank')}
+        aria-label="Download the pump.fun app"
         className="button-spacing"
         style={{
           marginTop: 24,
@@ -185,17 +116,17 @@ const AnotherAboutSection = () => {
           padding: '12px',
           fontSize: '16px',
           fontWeight: 'bold',
-          backgroundColor: '#00ff00',
+          backgroundColor: '#83efaa', /* Updated green */
           color: '#000',
           border: 'none',
           borderRadius: '12px',
           cursor: 'pointer',
           transition: 'background-color 0.3s, transform 0.2s',
         }}
-        onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#00cc00')}
-        onMouseOut={(e) => (e.currentTarget.style.backgroundColor = '#00ff00')}
+        onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#6bcc8c')} /* Slightly darker green */
+        onMouseOut={(e) => (e.currentTarget.style.backgroundColor = '#83efaa')} /* Updated green */
       >
-        Download BAGS
+        Download pump.fun
       </button>
     </div>
   );
@@ -227,10 +158,13 @@ const ContactSection = () => {
           <strong>Email: </strong> <a href="mailto:scumbag_sol@proton.me" style={{ color: '#00ff00' }}>scumbag_sol@proton.me</a>
         </li>
         <li style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>
-          <strong>Twitter: </strong> <a href="https://twitter.com/BlakeBoston617" target="_blank" rel="noopener noreferrer" style={{ color: '#00ff00' }}>@BlakeBoston617</a>
+          <strong>X (Twitter): </strong> <a href="https://x.com/BlakeBoston617" target="_blank" rel="noopener noreferrer" style={{ color: '#00ff00' }}>@BlakeBoston617</a>
         </li>
         <li style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>
           <strong>Instagram: </strong> <a href="https://www.instagram.com/irishdaddy617/" target="_blank" rel="noopener noreferrer" style={{ color: '#00ff00' }}>@irishdaddy617</a>
+        </li>
+        <li style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>
+          <strong>Developer: </strong> <a href="https://x.com/i2gucci" target="_blank" rel="noopener noreferrer" style={{ color: '#00ff00' }}>@i2gucci</a>
         </li>
       </ul>
     </div>

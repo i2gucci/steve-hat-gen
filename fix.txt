@@ -1,0 +1,61 @@
+# Hardcoded Paths Found in the Codebase
+
+## 1. Background Image in `styles.css`
+File: `src/styles.css`
+Issue:
+background-image: url('/src/assets/bg-pattern.png');
+Recommendation:
+Update to use a relative path or dynamic import.
+
+---
+
+## 2. Hat Image in `Canvas.tsx`
+File: `src/components/Canvas.tsx`
+Issue:
+hatImg.src = hat; // props.hat is the imported asset URL
+Recommendation:
+Ensure `hat` resolves correctly during deployment.
+
+---
+
+## 3. Hat Image in `App.tsx`
+File: `src/App.tsx`
+Issue:
+import scumbagHat from './assets/scumbag-hat.png';
+Recommendation:
+Ensure the asset is correctly placed in the `dist` folder during the build process.
+
+---
+
+## 4. Favicon in `index.html`
+File: `index.html`
+Issue:
+<link rel="icon" type="image/png" href="/favicon.png" />
+Recommendation:
+Ensure the favicon is correctly placed in the `dist` folder.
+
+---
+
+## 5. Copy Icon in `index.html`
+File: `index.html`
+Issue:
+background: url('/copy-icon.png') no-repeat center center;
+Recommendation:
+Update to use a relative path or ensure the file is correctly placed in the `dist` folder.
+
+---
+
+## 6. Script Path in `index.html`
+File: `index.html`
+Issue:
+<script type="module" src="/src/main.tsx"></script>
+Recommendation:
+Update to point to the built JavaScript file in the `dist` folder.
+
+---
+
+# Recommendations:
+1. Use relative paths or dynamic imports for all hardcoded paths.
+2. Verify asset placement in the `dist` folder during the build process.
+3. Rebuild the project (`npm run build`) and redeploy (`npx gh-pages -d dist`).
+4. Test the live site to ensure assets load correctly.

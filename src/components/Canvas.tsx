@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
+import hat from '../assets/scumbag-hat.png'; // Ensure correct relative path
 
 interface HatPosition {
   x: number;

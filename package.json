@@ -2,7 +2,7 @@
   "name": "scumbag-steve-hat-pfp-tool",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://i2gucci.github.io/steve-hat-gen",
+  "homepage": "https://scumbags.fun",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,6 +10,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "emailjs-com": "^3.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
